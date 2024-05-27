@@ -1,0 +1,7 @@
+CLIENT_ME = {
+    'APPLICATION_ID':'1004834577695545392',
+    'APPLICATION_SECRET':'2f0bb9aefdc0682bb2f26fcce37e3c982ed75e3d',
+    'AFF_ID':'3bf8f234.dfec4cd4.3bf8f235.519a2276',
+	'RAKUTEN_APP_ID':'your_rakuten_application_id',
+    'YAHOO_APP_ID':'dj00aiZpPW5jdDVXYTBLV2ViWCZzPWNvbnN1bWVyc2VjcmV0Jng9MWI-'
+}

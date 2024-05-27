@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        th, td {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for a Table</h1>
+    <form action="/search" method="post">
+        <label for="query">Query:</label>
+        <input type="text" id="query" name="query">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if rows %}
+        <h2>Results for "{{ query }}"</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <tr>
+                        {% for index in range(row|length) %}
+                            {% if columns[index] == 'itemName' %}
+                                <td><a href="{{ url_for('compare_prices', item_name=row[index]) }}" target="_blank">{{ row[index] }}</a></td>
+                            {% else %}
+                                <td>{{ row[index] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif query %}
+        <p>No results found for "{{ query }}". The query has been added for processing.</p>
+    {% endif %}
+</body>
+</html>
